@@ -38,6 +38,7 @@ class Odometer extends React.Component {
   constructor() {
     super();
     this.totalMiles = 0;
+    this.timeStamp = 0;
     this.laps = 0;
     this.miles = {
       miles : this.totalMiles
@@ -53,6 +54,10 @@ class Odometer extends React.Component {
     this.setState({
       miles : this.test
     })
+  }
+
+  addTimeStamp(seconds) {
+    this.timeStamp += seconds
   }
 
   resetOdometer(val) {
@@ -71,11 +76,14 @@ class Odometer extends React.Component {
           <button onClick={() => this.addMiles(100)}>Add 100</button>
           <button onClick={() => this.addMiles(10)}>Add 10</button>
           <button onClick={() => this.addMiles(1)}>Add 1</button>
+          <button onClick={() => this.addTimeStamp(2)}>Time</button>
         </div>
         <div className="odometerInfo">
+          <h4>Time Stamp: {this.timeStamp}</h4>
           <h4>Laps: {this.laps}</h4>
           <h2>Miles</h2>
           <h3>{(this.totalMiles.toString().padStart(4, '0'))}</h3>
+          
         </div>
         <div className="resetDiv">
           <button className="reset" onClick={() => this.resetOdometer(0)}>Reset</button>
