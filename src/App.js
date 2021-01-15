@@ -58,7 +58,11 @@ class Odometer extends React.Component {
 
   addTimeStamp(seconds) {
     this.timeStamp += seconds
-  }
+    this.setState({
+      time : seconds
+    })
+  };
+  
 
   resetOdometer(val) {
     this.totalMiles = val
